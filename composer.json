@@ -1,0 +1,21 @@
+{
+    "name": "ryodevz/validator",
+    "description": "Laravel-like validator.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ryodevz\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "RyoDev",
+            "email": "ytryo789@gmail.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
