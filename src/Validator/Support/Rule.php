@@ -29,7 +29,7 @@ class Rule
 
     public static function confirmed($attribute, $data)
     {
-        $confirmation = $data[$attribute . '_confirmation'];
+        $confirmation = $data[$attribute . '_confirmation'] ?? '';
         if (!($data[$attribute] == $confirmation)) {
             return "The {$attribute} confirmation does not match.";
         }
