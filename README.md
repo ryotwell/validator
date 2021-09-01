@@ -39,8 +39,11 @@ if(!$validator->is_fails()) {
     // code...
 }
 
-// All error messages
+// All error messages with key
 $validator->errors();
+
+// All error messages without key
+$validator->all();
 
 // Error messages from some fields
 $validator->errors(['name', 'email']);
