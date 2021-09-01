@@ -15,7 +15,7 @@ composer require ryodevz/validator
 ### Validator example usage
 
 ```php
-use Ryodevz\Facades\Validator;
+use Ryodevz\Validator\Facades\Validator;
 
 // Make validation
 $validator = Validator::make([
