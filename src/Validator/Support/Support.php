@@ -6,9 +6,24 @@ class Support
 {
     private $errors;
 
-    public function __construct(array $errors)
+    private $errorFields;
+
+    public function __construct(array $errors, $errorFields)
     {
         $this->errors = $errors;
+        $this->errorFields = $errorFields;
+    }
+
+    public function all()
+    {
+        $errorMessages = [];
+        foreach ($this->errorFields as $field) {
+            foreach ($this->errors[$field] as $message) {
+                $errorMessages[] = $message;
+            }
+        }
+
+        return $errorMessages;
     }
 
     public function errors(...$attributes)

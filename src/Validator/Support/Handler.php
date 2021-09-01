@@ -30,6 +30,7 @@ class Handler
     public function validate()
     {
         $errors = [];
+        $errorFields = [];
 
         foreach ($this->rules as $attribute => $rulesString) {
 
@@ -59,6 +60,8 @@ class Handler
                             } else {
                                 $errors[$attribute][] = $response;
                             }
+
+                            $errorFields[] = $attribute;
                         } else {
                             if (isset($errors[$attribute])) {
                                 unset($errors[$attribute]);
@@ -70,6 +73,6 @@ class Handler
             }
         }
 
-        return new Support($errors);
+        return new Support($errors, $errorFields);
     }
 }
