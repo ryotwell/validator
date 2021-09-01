@@ -4,21 +4,24 @@ namespace Ryodevz\Validator\Support;
 
 class Support
 {
-    private $errors;
+    public $data;
 
-    private $errorFields;
+    public $errorsMessages;
 
-    public function __construct(array $errors, $errorFields)
+    public $fieldsError;
+
+    public function __construct($data, $errorsMessages, $fieldsError)
     {
-        $this->errors = $errors;
-        $this->errorFields = $errorFields;
+        $this->data = $data;
+        $this->errorsMessages = $errorsMessages;
+        $this->fieldsError = $fieldsError;
     }
 
     public function all()
     {
         $errorMessages = [];
-        foreach ($this->errorFields as $field) {
-            foreach ($this->errors[$field] as $message) {
+        foreach ($this->fieldsError as $field) {
+            foreach ($this->errorsMessages[$field] as $message) {
                 $errorMessages[] = $message;
             }
         }
@@ -29,35 +32,35 @@ class Support
     public function errors(...$attributes)
     {
         if (empty($attributes)) {
-            return $this->errors;
+            return $this->errorsMessages;
         }
 
-        $errors = [];
+        $errorsMessages = [];
         foreach ($attributes as $attribute) {
-            $errors[$attribute] = $this->errors[$attribute];
+            $errorsMessages[$attribute] = $this->errorsMessages[$attribute];
         }
 
-        return $errors;
+        return $errorsMessages;
     }
 
     public function error(string $attribute)
     {
-        return $this->errors[$attribute][0] ?? '';
+        return $this->errorsMessages[$attribute][0] ?? '';
     }
 
     public function first()
     {
-        foreach ($this->errors as $error) {
+        foreach ($this->errorsMessages as $error) {
             return $error[0];
         }
     }
 
     public function is_fails()
     {
-        if (!empty($this->errors)) {
-            return true;
+        if (empty($this->errorsMessages)) {
+            return false;
         }
 
-        return false;
+        return true;
     }
 }

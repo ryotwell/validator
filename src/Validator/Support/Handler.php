@@ -11,9 +11,15 @@ class Handler
 
     public $rules = [];
 
-    public $nullable = false;
+    public $fieldsError = [];
+
+    public $errorsMessages = [];
 
     public $customErrorsMessage = [];
+
+    public $nullable = false;
+
+    public $isFail = false;
 
     public function __construct($data, $rules, $customErrorsMessage)
     {
@@ -29,12 +35,10 @@ class Handler
      */
     public function validate()
     {
-        $errors = [];
-        $errorFields = [];
-
         foreach ($this->rules as $attribute => $rulesString) {
 
             $this->nullable = false;
+            $this->isFail = false;
 
             foreach (explode('|', $rulesString) as $rule) {
 
@@ -56,23 +60,27 @@ class Handler
                     if ($response) {
                         if (!isset($response['nullable'])) {
                             if (isset($this->customErrorsMessage[$attribute][$rule])) {
-                                $errors[$attribute][] = $this->customErrorsMessage[$attribute][$rule];
+                                $this->errorsMessages[$attribute][] = $this->customErrorsMessage[$attribute][$rule];
                             } else {
-                                $errors[$attribute][] = $response;
+                                $this->errorsMessages[$attribute][] = $response;
                             }
 
-                            $errorFields[] = $attribute;
+                            $this->isFail = true;
                         } else {
-                            if (isset($errors[$attribute])) {
-                                unset($errors[$attribute]);
+                            if (isset($this->errorsMessages[$attribute])) {
+                                unset($this->errorsMessages[$attribute]);
                             }
                             $this->nullable = true;
                         }
                     }
                 }
             }
+
+            if ($this->isFail) {
+                $this->fieldsError[] = $attribute;
+            }
         }
 
-        return new Support($errors, $errorFields);
+        return new Support($this->data, $this->errorsMessages, $this->fieldsError);
     }
 }
