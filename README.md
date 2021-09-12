@@ -15,6 +15,8 @@ composer require ryodevz/validator
 ### Validator example usage
 
 ```php
+<?php
+
 use Ryodevz\Validator\Facades\Validator;
 
 // Make validation
@@ -60,6 +62,8 @@ $validator->first();
 Create one config file in `config/validator.php` and fill it with
 
 ```php
+<?php
+
 return [
     'array' => 'The :attribute must be an array.',
     'active_url' => 'The :attribute is not a valid URL.',
