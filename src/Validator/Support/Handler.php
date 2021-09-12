@@ -67,10 +67,12 @@ class Handler
 
                             $this->isFail = true;
                         } else {
-                            if (isset($this->errorsMessages[$attribute])) {
-                                unset($this->errorsMessages[$attribute]);
+                            if (!isset($this->data[$attribute])) {
+                                if (isset($this->errorsMessages[$attribute])) {
+                                    unset($this->errorsMessages[$attribute]);
+                                }
+                                $this->nullable = true;
                             }
-                            $this->nullable = true;
                         }
                     }
                 }
