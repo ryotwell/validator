@@ -7,25 +7,28 @@ use Ryodevz\Validator\Support\Support;
 
 class Handler
 {
-    public $data = [];
+    private $data = [];
 
-    public $rules = [];
+    private $rules = [];
 
-    public $fieldsError = [];
+    private $fieldsError = [];
 
-    public $errorsMessages = [];
+    private $errorsMessages = [];
 
-    public $customErrorsMessage = [];
+    private $customErrorsMessage = [];
 
-    public $nullable = false;
+    private $config = [];
 
-    public $isFail = false;
+    private $nullable = false;
 
-    public function __construct($data, $rules, $customErrorsMessage)
+    private $isFail = false;
+
+    public function __construct($data, $rules, $customErrorsMessage, array $config = [])
     {
         $this->data = $data;
         $this->rules = $rules;
         $this->customErrorsMessage = $customErrorsMessage;
+        $this->config = $config;
     }
 
     /**
@@ -52,9 +55,9 @@ class Handler
 
                     if (isset($explode[1])) {
                         $rule = $explode[0];
-                        $response = Rule::$rule($attribute, $this->data, $explode[1]);
+                        $response = Rule::$rule($attribute, $this->data, $explode[1], $this->config[$rule]);
                     } else {
-                        $response = Rule::$rule($attribute, $this->data);
+                        $response = Rule::$rule($attribute, $this->data, $this->config[$rule]);
                     }
 
                     if ($response) {
