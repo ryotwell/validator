@@ -25,11 +25,11 @@ $validator = Validator::make([
     'name'  => 'required|min:3',
     'email' => 'required|email',
 ], [
+    // Custom error message is optional
     'name' => [
         'required' => 'This is custom error message for rule required'
     ],
 ]);
-// Custom validation is optional
 
 // Validate
 $validator->validate();
