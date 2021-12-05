@@ -1,10 +1,10 @@
 {
     "name": "ryodevz/validator",
-    "description": "Laravel-like validator.",
+    "description": "Validator.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ryodevz\\": "src/"
+            "Ryodevz\\Validator\\": "src/"
         }
     },
     "authors": [

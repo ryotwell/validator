@@ -26,19 +26,14 @@ $validator = Validator::make([
 ], [
     'name'  => 'required|min:3',
     'email' => 'required|email',
-], [
-    // Custom error message is optional
-    'name' => [
-        'required' => 'This is custom error message for rule required'
-    ],
 ]);
 
 // Validate
 $validator->validate();
 
 // Check if it passes validation
-if(!$validator->is_fails()) {
-    // code...
+if(!$validator->fails()) {
+    // code . . .
 }
 
 // All error messages with key
@@ -46,12 +41,6 @@ $validator->errors();
 
 // All error messages without key
 $validator->all();
-
-// Error messages from some fields
-$validator->errors(['name', 'email']);
-
-// one error message
-$validator->error('name');
 
 // First error message
 $validator->first();
@@ -86,9 +75,9 @@ return [
     ],
     'not_in' => 'The selected :attribute is invalid.',
     'required' => 'The :attribute field is required.',
-    'required_with' => 'The :attribute field is required when :values is present.',
-    'required_without' => 'The :attribute field is required when :values is not present.',
-    'same' => 'The :attribute and :values must match.',
+    'required_with' => 'The :attribute field is required when :required_with is present.',
+    'required_without' => 'The :attribute field is required when :required_without is not present.',
+    'same' => 'The :attribute and :same must match.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid timezone.',
     'url' => 'The :attribute must be a valid URL.'
