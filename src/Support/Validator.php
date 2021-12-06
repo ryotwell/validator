@@ -25,8 +25,13 @@ class Validator
         $this->all[] = $message;
         $this->errors[$this->attribute][$this->rule] = $message;
 
+        return $this->setResponse(false, $message);
+    }
+
+    protected function setResponse(bool $status, string $message = null)
+    {
         return [
-            'status' => false,
+            'status' => $status,
             'message' => $message,
         ];
     }

@@ -24,7 +24,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function active_url()
@@ -33,7 +33,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function boolean()
@@ -42,7 +42,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function bool()
@@ -56,7 +56,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function email()
@@ -65,7 +65,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function in()
@@ -74,7 +74,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function ip()
@@ -83,7 +83,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function ip4()
@@ -92,7 +92,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function ip6()
@@ -101,7 +101,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function integer()
@@ -110,7 +110,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function int()
@@ -134,7 +134,7 @@ class Rule extends Validator
             }
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function max()
@@ -153,7 +153,7 @@ class Rule extends Validator
             }
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function nullable()
@@ -164,7 +164,7 @@ class Rule extends Validator
             return null;
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function not_in()
@@ -173,7 +173,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function required()
@@ -182,7 +182,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function required_with()
@@ -197,7 +197,7 @@ class Rule extends Validator
             }
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function required_without()
@@ -212,7 +212,7 @@ class Rule extends Validator
             }
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function same()
@@ -221,7 +221,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function string()
@@ -230,7 +230,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function timezone()
@@ -239,7 +239,7 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 
     protected function url()
@@ -248,6 +248,6 @@ class Rule extends Validator
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
-        return true;
+        return $this->setResponse(true);
     }
 }
