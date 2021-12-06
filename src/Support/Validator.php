@@ -56,7 +56,7 @@ class Validator
             $explodeRule = explode(':', $rule);
 
             $rule = $explodeRule[0];
-            $param = (isset($explodeRule[1]) ? $explodeRule[1] : []);
+            $param = (isset($explodeRule[1]) ? $explodeRule[1] : null);
 
             $this->rule = $rule;
             $this->param = $param;
