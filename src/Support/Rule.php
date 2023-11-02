@@ -52,7 +52,9 @@ class Rule extends Validator
 
     protected function confirmed()
     {
-        if (!($this->data() == (string) $this->data[$this->attribute . '_confirmation'])) {
+        if (! ($this->data() == (isset($this->data[$this->attribute . '_confirmation']) 
+            ? (string) $this->data[$this->attribute . '_confirmation']
+            : null)) ) {
             return $this->setError($this->messages[__FUNCTION__]);
         }
 
