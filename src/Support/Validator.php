@@ -43,7 +43,7 @@ class Validator
 
     protected function data()
     {
-        return $this->data[$this->attribute];
+        return $this->data[$this->attribute] ?? null;
     }
 
     protected function transRuleTo(string $toRule, string $fromRule)
